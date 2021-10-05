@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { DeleteOutlined, EditOutlined, EyeOutlined, PlusOutlined } from '@ant-design/icons/lib/icons';
-import { Modal, Table, Card, Row, Col, Divider, Button, message, Popconfirm, Form, Tooltip, Input } from 'antd';
+import { Modal, Table, Card, Row, Col, Button, message, Popconfirm, Form, Tooltip, Input } from 'antd';
 const { TextArea } = Input;
 
 
@@ -56,41 +56,6 @@ function App() {
     },
   ];
 
-  const data = [
-    {
-      key: 1,
-      empId: "Emp564s",
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-      description: 'My name is John Brown, I am 32 years old, living in New York No. 1 Lake Park.',
-    },
-    {
-      key: 2,
-      empId: "Emp564s",
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-      description: 'My name is Jim Green, I am 42 years old, living in London No. 1 Lake Park.',
-    },
-    {
-      key: 3,
-      empId: "Emp564s",
-      name: 'Not Expandable',
-      age: 29,
-      address: 'Jiangsu No. 1 Lake Park',
-      description: 'This not expandable',
-    },
-    {
-      key: 4,
-      empId: "Emp564s",
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-      description: 'My name is Joe Black, I am 32 years old, living in Sidney No. 1 Lake Park.',
-    },
-  ];
-
   // Initial Api Call
 
   const fetchEmployees = async () => {
@@ -127,7 +92,7 @@ function App() {
   // Display Employee Modal
 
   const onDisplayEmployee = async (_id) => {
-    console.log(_id)
+    // console.log(_id)
     const res = await axios.get("https://mern-task-jyoti.herokuapp.com/api/employees/" + _id);
     setEmployee(res.data);
     setIsDisplayModalVisible(true);
@@ -156,7 +121,7 @@ function App() {
 
   const deleteEmployee = async (_id) => {
 
-    console.log(_id)
+    // console.log(_id)
     try {
       const res = await axios.delete("https://mern-task-jyoti.herokuapp.com/api/employees/" + _id);
       if (res) {
@@ -174,8 +139,8 @@ function App() {
 
   // Submit Form
   const onFinishAddEmployee = async (value) => {
-    console.log(value)
-    if (updateMode == true) {
+    // console.log(value)
+    if (updateMode === true) {
       try {
         const res = await axios.put(`https://mern-task-jyoti.herokuapp.com/api/employees/${employeeId}`, value);
         if (res) {
